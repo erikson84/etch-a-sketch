@@ -20,14 +20,37 @@ body {
 
 .main {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-color:  cadetblue;
+    align-items: center;
+    justify-content: center;
 }
 
+.grid {
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 480px;
+    width: 480px;
+    margin: 50px;
+}
 .footer {
     display: flex;
     justify-content: center;
     background-color: darkslategrey;
     color: bisque;
+}
+
+.pixel {
+    background-color: white;
+}
+
+.pixel:hover {
+    background-color: black;
 }
 
 #reset {
