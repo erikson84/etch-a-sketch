@@ -26,22 +26,15 @@ function drawGrid(dim=16) {
 }
 
 function colorPixel(e) {
-    oldColor = e.srcElement.style['background-color'];
-    if (oldColor == '') {
-        this.style.backgroundColor = RGB([230, 230, 230]);
-    } else {
-        let oldRGB = parseRGB(oldColor);
-        let newRGB = oldRGB.map(val => Math.round(+val - 25.5));
-        this.style.backgroundColor = RGB(newRGB);
-
-        console.log(newRGB);
-    }
-    
+    let oldColor = window.getComputedStyle(e.srcElement).backgroundColor;
+    let oldRGB = parseRGB(oldColor);
+    let newRGB = oldRGB.map(val => Math.round(+val - 25.5));
+    this.style.backgroundColor = RGB(newRGB);
 }
 
 function reset(e) {
-    pixels = document.querySelectorAll('.pixelhover')
-    pixels.forEach(div => div.classList.remove("pixelhover"));
+    pixels = document.querySelectorAll('.pixel');
+    pixels.forEach(div => div.style.backgroundColor = 'rgb(255, 255, 255)');
 }
 
 function setGridSize(e) {
@@ -64,6 +57,6 @@ function parseRGB(rgb) {
 }
 
 function RGB(num_array) {
-    const corr_array = num_array.map(val => (val < 0)?0:val);
+    const corr_array = num_array.map(val => (val < 0) ? 0 : val);
     return `rgb(${corr_array[0]}, ${corr_array[1]}, ${corr_array[2]})`;
 }
