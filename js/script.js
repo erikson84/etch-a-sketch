@@ -26,7 +26,17 @@ function drawGrid(dim=16) {
 }
 
 function colorPixel(e) {
-    this.classList.add('pixelhover');
+    oldColor = e.srcElement.style['background-color'];
+    if (oldColor == '') {
+        this.style.backgroundColor = RGB([230, 230, 230]);
+    } else {
+        let oldRGB = parseRGB(oldColor);
+        let newRGB = oldRGB.map(val => Math.round(+val - 25.5));
+        this.style.backgroundColor = RGB(newRGB);
+
+        console.log(newRGB);
+    }
+    
 }
 
 function reset(e) {
@@ -47,4 +57,13 @@ function setGridSize(e) {
         return
     }
     drawGrid(newSize);
+}
+
+function parseRGB(rgb) {
+    return rgb.match(/[0-9]+/g);
+}
+
+function RGB(num_array) {
+    const corr_array = num_array.map(val => (val < 0)?0:val);
+    return `rgb(${corr_array[0]}, ${corr_array[1]}, ${corr_array[2]})`;
 }
