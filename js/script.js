@@ -39,6 +39,12 @@ function setGridSize(e) {
     if (newSize > 100) {
         alert("Size is greater than 100! Please choose a smaller value.")
         return
+    } else if (newSize == 0) {
+        alert("Please choose a number between 1 and 100.");
+        return
+    } else if (isNaN(newSize)) {
+        alert("Please enter a valid number between 1 and 100");
+        return
     }
     drawGrid(newSize);
 }
