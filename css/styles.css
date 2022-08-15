@@ -49,10 +49,16 @@ body {
     background-color: white;
 }
 
-.pixel:hover {
+.pixelhover {
     background-color: black;
 }
 
 #reset {
+    margin: 20px;
     flex: 0;
+}
+
+#setGridSize {
+    margin: 20px;
+    
 }
